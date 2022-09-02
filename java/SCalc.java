@@ -80,6 +80,7 @@ import com.sun.star.table.XTableChart;
 import com.sun.star.table.XTableCharts;
 import com.sun.star.table.XTableChartsSupplier;
 
+import java.nio.charset.StandardCharsets;
 
 public class SCalc  {
 
@@ -88,6 +89,8 @@ public class SCalc  {
         //oooooooooooooooooooooooooooStep 1oooooooooooooooooooooooooooooooooooooooooo
         // call UNO bootstrap method and get the remote component context form
         // the a running office (office will be started if necessary)
+
+        System.setProperty("file.encoding","UTF-8");
 
         XComponentContext xContext = null;
 
@@ -310,12 +313,27 @@ public class SCalc  {
             System.out.println("Change Diagram to 3D");
             XPropertySet oCPS = UnoRuntime.queryInterface(
                 XPropertySet.class, oDiag );
-            oCPS.setPropertyValue("Dim3D", Boolean.TRUE);
+            //oCPS.setPropertyValue("Dim3D", Boolean.TRUE);
             System.out.println("Change the title");
             Thread.sleep(200);
             XPropertySet oTPS = UnoRuntime.queryInterface(
                 XPropertySet.class, xChart.getTitle() );
-            oTPS.setPropertyValue("String","The new title");
+            
+            //String rawString = "Grafikon šš ćĆ";
+            //String data = "\u201e \u20ac \u201a \u0192 \u2026 \u2020 \u2021 \u02c6 \u2030 \u0160  "
+			//+ "\u2039 \u0152 \u017d"
+			//+ "\u2018 \u2019 \u201c \u201d \u2022 \u2013 \u2014 \u02dc "
+			//+ "\u2122 \u0161 \u203a \u0153 \u017e \u0178";
+
+            //new String(latin1, "ISO-8859-2").getBytes("UTF-8");
+
+            String rawString = "Entwickeln Sie mit šŠđĐ";
+            //byte[] bytes = rawString.getBytes(StandardCharsets.UTF_8);
+            //String utf8EncodedString = new String(bytes, StandardCharsets.ISO_8859_1);
+
+            //String utf8ToWindows = new String(data.getBytes("utf-8"),
+		    //		"windows-1250");    
+            oTPS.setPropertyValue("String", rawString);
         } catch (Exception e){
             System.err.println("Changing Properties failed "+e);
             e.printStackTrace(System.err);

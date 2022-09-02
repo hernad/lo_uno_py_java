@@ -26,12 +26,14 @@ java -cp classes/libreoffice.jar;c:/dev SimpleBootstrap_java
 
 
 C:\dev\ziher\ziher_mono\lo_uno_py_java\java>
-javac -cp "c:/Program Files/LibreOffice/program/classes/libreoffice.jar" SCalc.java
+set LO_CLASSES="c:/dev/ziher/ziher_mono/lo_uno_py_java/java;c:/Program Files/LibreOffice/program/classes/libreoffice.jar"
+
+// utf-8 encode string (naslov grafikona)
+javac -encoding "UTF-8" -cp %LO_CLASSES% SCalc.java
 
 set LO_PROGRAM="c:\Program Files\LibreOffice\program"
 cd %LO_PROGRAM%
 
 REM set LO_CLASSES="c:/Program Files/LibreOffice/program/classes/libreoffice.jar"
 
-set LO_CLASSES="c:/dev/ziher/ziher_mono/lo_uno_py_java/java;c:/Program Files/LibreOffice/program/classes/libreoffice.jar"
-java -cp %LO_CLASSES% SCalc
+java -Dfile.encoding=UTF-8 -cp %LO_CLASSES% SCalc
