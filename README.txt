@@ -16,10 +16,22 @@ Zato je najbolje koristit java uno
 
 = compile =
 c:\dev
-javac -cp c:\Program Files\LibreOffice\program\class\libreoffice.jar SimpleBootstrap_java.java
+javac -cp "c:/Program Files/LibreOffice/program/classes/libreoffice.jar SimpleBootstrap_java.java
 
 = run =
 mora se pokrentuti iz LO/programs
 
 cd c:\Program Files\LibreOffice\program
 java -cp classes/libreoffice.jar;c:/dev SimpleBootstrap_java
+
+
+C:\dev\ziher\ziher_mono\lo_uno_py_java\java>
+javac -cp "c:/Program Files/LibreOffice/program/classes/libreoffice.jar" SCalc.java
+
+set LO_PROGRAM="c:\Program Files\LibreOffice\program"
+cd %LO_PROGRAM%
+
+REM set LO_CLASSES="c:/Program Files/LibreOffice/program/classes/libreoffice.jar"
+
+set LO_CLASSES="c:/dev/ziher/ziher_mono/lo_uno_py_java/java;c:/Program Files/LibreOffice/program/classes/libreoffice.jar"
+java -cp %LO_CLASSES% SCalc
