@@ -11,3 +11,15 @@ c:\Program Files\LibreOffice\program\pyuno.pyd
 ovaj dll je linkan sa python38.dll tako da se ne moze koristiti u npr. py 3.10
 
 Zato je najbolje koristit java uno
+
+== Java UNO ===
+
+= compile =
+c:\dev
+javac -cp c:\Program Files\LibreOffice\program\class\libreoffice.jar SimpleBootstrap_java.java
+
+= run =
+mora se pokrentuti iz LO/programs
+
+cd c:\Program Files\LibreOffice\program
+java -cp classes/libreoffice.jar;c:/dev SimpleBootstrap_java
